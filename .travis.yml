@@ -1,8 +1,7 @@
-deploy:
-  provider: heroku
-  api_key:
-    secure: aD0t6DZJ3qIAuDxVulzMe03jXBWMj9PPwg3DnMrTvri9aICbh+Rhed0uhUN+x2OMZcxWzwW9sif3O7/4JhLrVdpsn4slL4lXOYkeAaqpF21y1wvFXbhjRL2109dAU811j3+s3Z0GfJHx7MtSmUobXnBQ5t0VuLDrVENTYArhMrA=
-  app: travis-test-app
-  run:
-    - "rake db:migrate"
-    - restart
+language: ruby
+rvm:
+  - 2.0.0-p481
+
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+
